@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+# Immediately exit if any command not used in a conditional fails
+set -e
+
+function at_exit {
+  local exit_status=$?
+
+  if [[ ! $exit_status -eq 0 ]]; then
+    echo
+    echo "Set up failed. Please address the issues above and try again."
+  fi
+}
+
+trap at_exit EXIT
+
+echo "==> Checking prequisites"
+
+command -v ruby || {
+  echo "Ruby not detected. Consider installing a Ruby version manager, like RVM: https://rvm.io/"
+  exit 1
+}
+
+command -v bundle || {
+  echo "Bundler not detected. Install it with: \`gem install bundler\`"
+  exit 1
+}
+
+command -v heroku || {
+  echo "Heroku CLI not detected. Install it from: https://devcenter.heroku.com/articles/heroku-cli"
+  exit 1
+}
+
+echo "==> Installing dependencies"
+
+bundle install
+
+cat <<BANNER
+
+==> You're good to go!
+
+    To start a local server:
+
+      bin/start
+
+    To run all tests:
+
+      bin/test
+
+BANNER
+

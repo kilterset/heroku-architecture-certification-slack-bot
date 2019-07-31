@@ -1,0 +1,22 @@
+{
+  "name": "Heroku Architecture Certification Slack Bot",
+  "description": "A Slack bot that for quizzing yourself in preparation for your Salesforce Heroku Architecture certification.",
+  "repository": "https://github.com/trineo/heroku-architecture-certification-slack-bot",
+  "keywords": ["heroku", "ruby", "architecture", "slack" , "slackbot", "bot"],
+  "addons": [
+    {
+      "plan": "papertrail"
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ],
+  "env": {
+    "SLACK_SIGNING_SECRET": {
+      "description": "Find in the registered Slack app's “App Credentials”",
+      "required": true
+    }
+  }
+}
