@@ -7,7 +7,7 @@ GEM
       i18n (>= 0.7)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
-    rack (2.0.8)
+    rack (2.1.4)
     rack-slack_request_verification (1.0.0.pre2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
